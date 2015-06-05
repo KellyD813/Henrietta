@@ -63,17 +63,14 @@ module Wiki
 
 		patch '/articles/:id' do
 			article_id = params[:id]
-			cat = "SELECT id, name FROM categories"
-			@results = $db.exec(cat);
-
 			query = "SELECT categories.*, articles.id AS art_id, articles.headline AS headline, articles.summary AS summary, articles.body AS body, articles.last_updated AS last_updated, articles.created_at AS created_at, authors.name AS author_name FROM categories INNER JOIN articles ON articles.category_id = categories.id INNER JOIN authors ON articles.author_id = authors.id WHERE articles.id = $1"
 			@articles = $db.exec_params(query, [article_id]);
 			art_id = params[:id]
 			headline = params[:headline]
 			summary = params[:summary]
 			body = params[:body]
-			query = "UPDATE articles SET headline = $1, summary = $2, body = $3, last_updated = CURRENT_TIMESTAMP WHERE id = $4"
-			$db.exec_params(query, [headline, summary, body, article_id])
+			update = "UPDATE articles SET headline = $1, summary = $2, body = $3, last_updated = CURRENT_TIMESTAMP WHERE id = $4"
+			$db.exec_params(update, [headline, summary, body, article_id])
 			redirect "/articles/#{article_id}"
 		end
 
