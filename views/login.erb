@@ -1,0 +1,16 @@
+<h1>Login Page</h1>
+
+<p style="color: red;"><%= @message %></p>
+
+<form action="/users/login" method="POST">
+  <input type="text" name="email"><br>
+  <input type="password" name="password">
+  <input type="submit" value="Log In">
+</form>
+
+
+<!-- If user lands on homepage, but is logged in
+			link to user page is available -->
+<% if current_user %>
+	<a href="/">Link to User Page</a>
+	<% end %>

@@ -1,7 +1,6 @@
 <h1>Create a New Article</h1>
 
 <form method="POST" action="/create">
-	<input type="text" name="name" placeholder="enter name"><br>
 	<select name="category">
 		<% @results.each do |category| %>
 	  <option value="<%= category["id"] %>" selected><%= category["name"] %></option> 

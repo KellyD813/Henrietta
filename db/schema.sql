@@ -8,6 +8,7 @@ CREATE TABLE authors (
 	position VARCHAR,
 	image VARCHAR,
 	email VARCHAR,
+	password VARCHAR,
 	created_at TIMESTAMP
 );
 

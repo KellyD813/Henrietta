@@ -2,11 +2,11 @@
 TRUNCATE TABLE authors, articles, categories RESTART IDENTITY;
 
 INSERT INTO authors
-(name, position, email, created_at)
+(name, position, email, password, created_at)
 VALUES
-('Henrietta Packing', 'CEO', 'h@company.com', CURRENT_TIMESTAMP),
-('Kelly Devine', 'Analyst', 'k@company.com', CURRENT_TIMESTAMP),
-('Ian Rose', 'Designer', 'i@company.com', CURRENT_TIMESTAMP)
+('Henrietta Packing', 'CEO', 'h@company.com', 'pass1', CURRENT_TIMESTAMP),
+('Kelly Devine', 'Analyst', 'k@company.com', 'pass2', CURRENT_TIMESTAMP),
+('Ian Rose', 'Designer', 'i@company.com', 'pass3', CURRENT_TIMESTAMP)
 ;
 
 INSERT INTO categories

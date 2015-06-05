@@ -14,10 +14,49 @@ module Wiki
 			set :sessions, true
 		end
 
-		# -- HOME --
+    def current_user
+      session[:user_id]
+    end
+
+    def logged_in?
+      !current_user.nil?
+    end
+
+		# -- LOGIN --
 
 		get '/' do
-			erb :home
+			erb :login
+		end
+
+		post '/users/login' do
+			email = params[:email]
+			password = params[:password]
+			query = "SELECT * FROM authors WHERE email = $1 AND password = $2"
+			@user = $db.exec_params(query, [email, password])
+			user_id = @user.first["id"]
+			if @user.first.nil?
+				@message = "Invalid Login"
+				erb :login
+			else
+				session[:user_id] = user_id
+				redirect "/users/#{user_id}"
+			end
+		end
+
+		# -- LOGOUT -- 
+    delete '/users/login' do
+      session[:user_id] = nil
+      redirect '/'
+    end
+
+
+		# -- USER PAGE -- 
+
+		get '/users/:id' do
+			id = params[:id]
+			query = "SELECT * FROM authors WHERE id = $1"
+			@user = $db.exec_params(query, [id]).first
+			erb :user
 		end
 
 		# -- CREATE --
@@ -29,14 +68,19 @@ module Wiki
 		end
 
 		post '/create' do 
-			author_id = params[:name]
+		if logged_in?	
+			author_id = current_user
 			category_id = params[:category].to_i
 			headline = params[:headline]
 			summary = params[:summary]
 			body = params[:body]
 			query = "INSERT INTO articles (author_id, category_id, headline, body, summary, created_at, last_updated) VALUES ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
 			@create = $db.exec_params(query, [author_id, category_id, headline, body, summary])
-			redirect '/articles'
+			redirect "/articles"
+		else
+			status 403
+			"PERMISSION DENIED"
+		end
 		end
 
 		# -- ARTICLES -- 
