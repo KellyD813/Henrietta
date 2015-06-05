@@ -6,7 +6,7 @@
 <p><%= article["body"] %></p>
 <h3>Author: <%= article["author_name"] %></h3>
 <p>Last updated: <%= article["last_updated"] %></p>
-<p>Created: <%= article["created_at"] %></p>
+<p class="time">Created: <%= article["created_at"] %></p>
 <p>Category: <%= article["name"] %></p>
 <a href="/articles/<%= article["art_id"] %>/edit">Edit Article</a><br>
 <% end %>
