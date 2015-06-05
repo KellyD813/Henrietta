@@ -1,0 +1,8 @@
+<h1>Categories Page</h1>
+<ul>
+<% @categories.each do |category| %>
+	<li><a href="/categories/<%= category["id"]%>"><%= category["name"] %></a> &mdash; <%= category["description"] %></li>
+<% end %>
+</ul>
+<a href="/">Home</a><br>
+<a href="/articles">Articles Page</a>

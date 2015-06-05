@@ -1,0 +1,21 @@
+<h1>Edit Page</h1>
+
+<form method="POST" action="/articles/<%= @articles.first["art_id"] %>">
+	<input type="hidden" name="_method" value="patch">
+	<input type="text" name="headline" value="<%= @articles.first["headline"]%>"><br>
+	<input type="text" name="summary" value="<%= @articles.first["summary"]%>"><br>
+	<input type="text" name="body" value="<%= @articles.first["body"]%>"><br>
+
+
+	<select name="category">
+		<% @results.each do |category| %>
+	  <option value="<%= category["id"] %>" selected><%= category["name"] %></option> 
+	  <% end %>
+	</select>
+
+
+	<input type="submit" value="Edit">
+</form>
+
+
+

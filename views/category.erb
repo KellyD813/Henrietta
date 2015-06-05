@@ -1,0 +1,17 @@
+<% @category.each do |category| %>
+	<h1><%= category["name"] %> Page</h1>
+	<p><%= category["description"] %></p>
+<% end %>
+<hr>
+<h1>Articles within Category</h1>
+<ul>
+<% @cat_articles.each do |article| %>
+	<li><a href="/articles/<%= article["article_id"] %>"><%= article["headline"] %></a></li>
+<% end %>
+</ul>
+
+
+<a href="/">Home</a><br>
+<a href="/articles">Articles Page</a><br>
+<a href="/categories">Categories Page</a>
+
