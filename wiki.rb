@@ -14,13 +14,13 @@ module Wiki
 			set :sessions, true
 		end
 
-    def current_user
-      session[:user_id]
-    end
+		def current_user
+			session[:user_id]
+		end
 
-    def logged_in?
-      !current_user.nil?
-    end
+		def logged_in?
+			!current_user.nil?
+		end
 
 		# -- LOGIN --
 
@@ -44,11 +44,11 @@ module Wiki
 		end
 
 		# -- LOGOUT -- 
-    delete '/users/login' do
-      session[:user_id] = nil
-      redirect '/'
-    end
 
+		delete '/users/login' do
+			session[:user_id] = nil
+			redirect '/'
+		end
 
 		# -- USER PAGE -- 
 
@@ -98,6 +98,8 @@ module Wiki
 			erb :article
 		end
 
+		# -- EDIT ARTICLES -- 
+
 		get '/articles/:id/edit' do
 			article_id = params[:id]
 			query = "SELECT categories.*, articles.id AS art_id, articles.headline AS headline, articles.summary AS summary, articles.body AS body, articles.last_updated AS last_updated, articles.created_at AS created_at, authors.name AS author_name FROM categories INNER JOIN articles ON articles.category_id = categories.id INNER JOIN authors ON articles.author_id = authors.id WHERE articles.id = $1"
@@ -117,7 +119,6 @@ module Wiki
 			$db.exec_params(update, [headline, summary, body, article_id])
 			redirect "/articles/#{article_id}"
 		end
-
 
 		# -- CATEGORIES --
 
