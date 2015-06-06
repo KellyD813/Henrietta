@@ -1,0 +1,10 @@
+<img src="<%= @no_author.first["image"] %>">
+<h1><%= @no_author.first["name"] %></h1>
+<h2><%= @no_author.first["position"] %></h2>
+<p><%= @no_author.first["email"] %></p>
+
+<ul>
+	<% @author.each do |article| %>
+			<li><a href="/articles/<%= article["art_id"] %>"><%= article["headline"] %></a></lil>
+	<% end %>
+</ul>

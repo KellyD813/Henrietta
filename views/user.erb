@@ -1,12 +1,8 @@
 <h1>User</h1>
 
-<dl>
-	<dt>Name:</dt>
-	<dd><%= @user["name"] %></dd>
-	<dt>Email:</dt>
-	<dd><%= @user["email"] %></dd>
-</dl>
+<img src="<%= @user["image"] %>">
+<h1><%= @user["name"] %></h1>
+<p><%= @user["position"] %></p>
+<p><%= @user["email"] %></p>
 
-<a href="/articles"><h2>Link to Articles Page</h2></a>
-<a href="/categories"><h2>Link to Categories Page</h2></a>
 <a href="/create"><h2>Create a New Article</h2></a>

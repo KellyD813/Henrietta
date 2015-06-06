@@ -4,13 +4,14 @@
 <h1><%= article["headline"] %></h1>
 <h3><%= article["summary"] %></h3>
 <p><%= article["body"] %></p>
-<h3>Author: <%= article["author_name"] %></h3>
+<a href="/authors/<%= article["auth_id"] %>">Author: <%= article["author_name"] %></a>
 <p>Last updated: <%= article["last_updated"] %></p>
 <p class="time">Created: <%= article["created_at"] %></p>
 <p>Category: <%= article["name"] %></p>
 <a href="/articles/<%= article["art_id"] %>/edit">Edit Article</a><br>
+<form action="/articles/<%= article["art_id"] %>" method="POST">
+	<input name="_method" type="hidden" value="DELETE">
+	<input type="submit" value="Delete Article">
+</form>
 <% end %>
 
-<a href="/">Home</a><br>
-<a href="/articles">Articles Page</a><br>
-<a href="/categories">Categories Page</a>

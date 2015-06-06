@@ -10,7 +10,11 @@
 <body>
 
   <% if current_user %>
-    You are Logged In
+    <p>You are Logged In<p>
+    <a href="/users/<%= current_user %>">Home</a><br>
+    <a href="/articles">Articles Page</a><br>
+    <a href="/categories">Categories Page</a><br>
+    <a href="/authors">Authors Page</a>
     <form action="/users/login" method="POST">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Log Out">

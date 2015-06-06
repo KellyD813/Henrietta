@@ -93,7 +93,7 @@ module Wiki
 
 		get '/articles/:id' do
 			article_id = params[:id]
-			query = "SELECT categories.*, articles.id AS art_id, articles.headline AS headline, articles.summary AS summary, articles.body AS body, articles.last_updated AS last_updated, articles.created_at AS created_at, authors.name AS author_name FROM categories INNER JOIN articles ON articles.category_id = categories.id INNER JOIN authors ON articles.author_id = authors.id WHERE articles.id = $1"
+			query = "SELECT categories.*, articles.id AS art_id, articles.headline AS headline, articles.summary AS summary, articles.body AS body, articles.last_updated AS last_updated, articles.created_at AS created_at, authors.name AS author_name, authors.id AS auth_id FROM categories INNER JOIN articles ON articles.category_id = categories.id INNER JOIN authors ON articles.author_id = authors.id WHERE articles.id = $1"
 			@articles = $db.exec_params(query, [article_id]);
 			erb :article
 		end
@@ -120,6 +120,13 @@ module Wiki
 			redirect "/articles/#{article_id}"
 		end
 
+		delete '/articles/:id' do 
+			id = params[:id]
+			query = "DELETE FROM articles WHERE articles.id = $1"
+			$db.exec_params(query, [id])
+			redirect "/articles"
+		end
+
 		# -- CATEGORIES --
 
 		get '/categories' do
@@ -134,6 +141,23 @@ module Wiki
 			query = "SELECT categories.*, articles.headline AS headline, articles.id AS article_id FROM categories JOIN articles ON categories.id = articles.category_id WHERE categories.id = $1"
 			@cat_articles = $db.exec_params(query, [category_id]);
 			erb :category
+		end
+
+		# -- AUTHORS --
+
+		get '/authors' do
+			query = "SELECT * FROM authors"
+			@authors = $db.exec_params(query)
+			erb :authors
+		end
+
+		get '/authors/:id' do
+			id = params[:id]
+			query = "SELECT authors.*, articles.author_id, articles.headline, articles.id AS art_id FROM authors JOIN articles ON authors.id = articles.author_id WHERE authors.id = $1"
+			@author = $db.exec_params(query, [id])
+			results = "SELECT * FROM authors WHERE id = $1"
+			@no_author = $db.exec_params(results, [id])
+			erb :author
 		end
 
 	end # end of Server class

@@ -1,0 +1,6 @@
+<h1>Browse by Authors<h1>
+<ul>
+	<% @authors.each do |author| %>
+		<li><a href="/authors/<%= author["id"] %>"><%= author["name"] %> &mdash; <em><%= author["position"] %></em></a></li>
+	<% end %>
+</ul>
