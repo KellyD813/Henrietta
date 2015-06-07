@@ -1,8 +1,8 @@
-<img src="<%= @no_author.first["image"] %>">
-<h1><%= @no_author.first["name"] %></h1>
-<h2><%= @no_author.first["position"] %></h2>
-<p><%= @no_author.first["email"] %></p>
+<div class="user">
+	<h1><%= @no_author.first["name"] %> &mdash; <%= @no_author.first["position"] %></h1>
+	<p>Contact Info: <%= @no_author.first["email"] %></p>
+	<img class="img-user" src="<%= @no_author.first["image"] %>">
+</div>
 <% @author.each do |article| %>
 		<div class="entry"><a href="/articles/<%= article["art_id"] %>"><%= article["headline"] %></a></div>
 <% end %>
-

@@ -1,4 +1,5 @@
 <% @articles.each do |article| %>
+
 <h1><%= article["headline"] %></h1>
 <p class="summary"><%= article["summary"] %></p>
 <p class="author">by <a href="/authors/<%= article["auth_id"] %>"><%= article["author_name"] %></a></p>
@@ -15,4 +16,5 @@
 	<input name="_method" type="hidden" value="DELETE">
 	<input type="submit" value="Delete Article">
 </form>
+
 <% end %>
