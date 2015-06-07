@@ -1,7 +1,10 @@
 <h1>Articles Page</h1>
 <ul>
 	<% @results.each do |article| %>
-		<li><a href="/articles/<%= article["id"] %>"><%= article["headline"] %> &mdash; <%= article["user"] %></a></li>
+		<li><a href="/articles/<%= article["id"] %>"><%= markdown(article["headline"]) %></a></li>
+		<ul>
+			 <li><%= markdown(article["user"]) %></li>
+		</ul>
 	<% end %>
 </ul>
 

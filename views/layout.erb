@@ -11,10 +11,10 @@
 
   <% if current_user %>
     <p>You are Logged In<p>
-    <a href="/users/<%= current_user %>">Home</a><br>
-    <a href="/articles">Articles Page</a><br>
-    <a href="/categories">Categories Page</a><br>
-    <a href="/authors">Authors Page</a>
+    <a class="button" href="/users/<%= current_user %>">Home</a><br>
+    <a class="button" href="/articles">Articles Page</a><br>
+    <a class="button" href="/categories">Categories Page</a><br>
+    <a class="button" href="/authors">Authors Page</a>
     <form action="/users/login" method="POST">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Log Out">
@@ -23,8 +23,10 @@
     You are Not Logged In
   <% end %>
 
-
 	<%= yield %>
+
+  <!-- Hot Air Balloon by Arthur Shlain from the Noun Project -->
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>	
 <script src="/scripts/jquery-2.1.4.js"></script>
 <script src="/scripts/main.js"></script>

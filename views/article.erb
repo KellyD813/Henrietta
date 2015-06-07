@@ -1,14 +1,14 @@
 <h1>Individual Article Page</h1>
 
 <% @articles.each do |article| %>
-<h1><%= article["headline"] %></h1>
-<h3><%= article["summary"] %></h3>
-<p><%= article["body"] %></p>
-<a href="/authors/<%= article["auth_id"] %>">Author: <%= article["author_name"] %></a>
+<h1><%= markdown(article["headline"]) %></h1>
+<h3><%= markdown(article["summary"]) %></h3>
+<p><%= markdown(article["body"]) %></p>
+<a class="button" href="/authors/<%= article["auth_id"] %>">Author: <%= article["author_name"] %></a>
 <p>Last updated: <%= article["last_updated"] %></p>
 <p class="time">Created: <%= article["created_at"] %></p>
-<p>Category: <%= article["name"] %></p>
-<a href="/articles/<%= article["art_id"] %>/edit">Edit Article</a><br>
+<a class="button" href="/categories/<%= article["id"] %>">Category: <%= article["name"] %></a><br>
+<a class="button" href="/articles/<%= article["art_id"] %>/edit">Edit Article</a><br>
 <form action="/articles/<%= article["art_id"] %>" method="POST">
 	<input name="_method" type="hidden" value="DELETE">
 	<input type="submit" value="Delete Article">
