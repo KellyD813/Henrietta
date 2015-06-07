@@ -1,17 +1,18 @@
-<h1>Individual Article Page</h1>
-
 <% @articles.each do |article| %>
-<h1><%= markdown(article["headline"]) %></h1>
-<h3><%= markdown(article["summary"]) %></h3>
-<p><%= markdown(article["body"]) %></p>
-<a class="button" href="/authors/<%= article["auth_id"] %>">Author: <%= article["author_name"] %></a>
-<p>Last updated: <%= article["last_updated"] %></p>
+<h1><%= article["headline"] %></h1>
+<p class="summary"><%= article["summary"] %></p>
+<p class="author">by <a href="/authors/<%= article["auth_id"] %>"><%= article["author_name"] %></a></p>
+<div class="article-body">
+	<%= markdown(article["body"]) %>
+</div>
+<% if article["last_updated"] %>
+	<p>Last updated: <%= article["last_updated"] %></p>
+<% end %>
 <p class="time">Created: <%= article["created_at"] %></p>
-<a class="button" href="/categories/<%= article["id"] %>">Category: <%= article["name"] %></a><br>
-<a class="button" href="/articles/<%= article["art_id"] %>/edit">Edit Article</a><br>
-<form action="/articles/<%= article["art_id"] %>" method="POST">
+<p>Category: <a href="/categories/<%= article["id"] %>"><%= article["name"] %></a></p>
+<a class="button button-primary" href="/articles/<%= article["art_id"] %>/edit">Edit Article</a>
+<form class="inline-block" action="/articles/<%= article["art_id"] %>" method="POST">
 	<input name="_method" type="hidden" value="DELETE">
 	<input type="submit" value="Delete Article">
 </form>
 <% end %>
-

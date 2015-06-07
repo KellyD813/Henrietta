@@ -1,6 +1,6 @@
-<h1>Categories Page</h1>
-<ul>
+<h1>Categories</h1>
 <% @categories.each do |category| %>
-	<li><a href="/categories/<%= category["id"]%>"><%= category["name"] %></a> &mdash; <%= category["description"] %></li>
+	<div class="entry">
+		<h2><a href="/categories/<%= category["id"]%>"><%= category["name"] %></a></h2>
+		<p><%= category["description"] %></p></div>
 <% end %>
-</ul>

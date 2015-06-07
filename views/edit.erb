@@ -2,10 +2,10 @@
 
 <form method="POST" action="/articles/<%= @articles.first["art_id"] %>">
 	<input type="hidden" name="_method" value="patch">
-	<input type="text" name="headline" value="<%= @articles.first["headline"]%>"><br>
-	<input type="text" name="summary" value="<%= @articles.first["summary"]%>"><br>
-	<textarea name="body"><%= @articles.first["body"] %></textarea>
-	<input type="submit" value="Edit">
+	<input class="u-full-width" type="text" name="headline" value="<%= @articles.first["headline"]%>">
+	<input class="u-full-width" type="text" name="summary" value="<%= @articles.first["summary"]%>">
+	<textarea class="u-full-width" name="body"><%= @articles.first["body"] %></textarea>
+	<input class="button button-primary" type="submit" value="Edit">
 </form>
 
 

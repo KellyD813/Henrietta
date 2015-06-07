@@ -1,10 +1,12 @@
-<h1>Login Page</h1>
-
+<div class="login-view">
+<div class="login-form">
+<h1>Please Login</h1>
 <p style="color: red;"><%= @message %></p>
-
 <form action="/users/login" method="POST">
-  <input type="text" name="email"><br>
-  <input type="password" name="password">
-  <input type="submit" value="Log In">
+  <input type="text" name="email" placeholder="Your Email">
+  <input type="password" name="password" placeholder="Your Password">
+  <input class="button button-primary" type="submit" value="Log In">
 </form>
+</div>
+</div>
 
