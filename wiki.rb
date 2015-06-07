@@ -22,10 +22,10 @@ module Wiki
 			!current_user.nil?
 		end
 
-   	def markdown(text)
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :hard_wrap => true, :space_after_headers => true )
-      markdown.render(text)
-    end 
+		def markdown(text)
+			markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :hard_wrap => true, :space_after_headers => true )
+			markdown.render(text)
+		end 
 
 		# -- LOGIN --
 
