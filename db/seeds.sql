@@ -1,6 +1,3 @@
-
-TRUNCATE TABLE authors, articles, categories RESTART IDENTITY;
-
 INSERT INTO authors
 (name, position, image, email, password, created_at)
 VALUES
