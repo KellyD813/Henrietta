@@ -1,10 +1,12 @@
 source "https://rubygems.org"
 
 gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'pry'
 gem 'pg'
 gem 'rest-client'
 gem 'redcarpet'
 
+group :development do
+	gem 'sinatra-contrib'
+	gem 'pry'
+end
 
