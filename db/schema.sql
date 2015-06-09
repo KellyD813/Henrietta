@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS authors, categories, articles;
 
 CREATE TABLE authors (
 	id SERIAL PRIMARY KEY,

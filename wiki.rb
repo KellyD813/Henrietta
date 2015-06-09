@@ -153,6 +153,13 @@ module Wiki
 			erb :category
 		end
 
+		delete '/categories/:id' do 
+			id = params[:id]
+			query = "DELETE FROM categories WHERE categories.id = $1"
+			$db.exec_params(query, [id])
+			redirect "/categories"
+		end
+
 		# -- AUTHORS --
 
 		get '/authors' do

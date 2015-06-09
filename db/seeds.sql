@@ -1,3 +1,5 @@
+
+
 INSERT INTO authors
 (name, position, image, email, password, created_at)
 VALUES
@@ -38,9 +40,6 @@ VALUES
 ('Social Media', 'Articles regardin social media tips and strategies.'),
 ('Weather', 'Articles related to forecasts, past weather patterns, and temperature.')
 ;
-
-
-
 
 INSERT INTO articles
 (author_id, headline, body, summary, category_id, created_at)
