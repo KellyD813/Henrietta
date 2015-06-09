@@ -1,8 +1,3 @@
-require 'sinatra/base'
-require 'sinatra/reloader'
-require 'pry'
-require 'redcarpet'
-
 require_relative 'db/connection'
 
 module Wiki
@@ -10,20 +5,18 @@ module Wiki
 	class Server < Sinatra::Base
 
     configure :development do
-      $db = PG.connect dbname: "wiki", host: "localhost"
+			require 'sinatra/base'
+			require 'sinatra/reloader'
+			require 'pry'
+			require 'redcarpet'
 			register Sinatra::Reloader
 			set :sessions, true
     end
 
     configure :production do
-      require 'uri'
-      uri = URI.parse ENV["DATABASE_URL"]
-      $db = PG.connect dbname: uri.path[1..-1],
-                         host: uri.host,
-                         port: uri.port,
-                         user: uri.user,
-                     password: uri.password
-	    set :sessions, true
+	    require 'sinatra/base'
+	    require 'redcarpet'
+     set :sessions, true
     end
 
 		def current_user
