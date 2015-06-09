@@ -4,9 +4,5 @@
 		<h2><a href="/categories/<%= category["id"]%>"><%= category["name"] %></a></h2>
 		<p><%= category["description"] %></p>
 	</div>
-	<form class="inline-block" action="/categories/<%= category["id"] %>" method="POST">
-		<input name="_method" type="hidden" value="DELETE">
-		<input type="submit" value="Delete Category">
-	</form>
 <% end %>
 
