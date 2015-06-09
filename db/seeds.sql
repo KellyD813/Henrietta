@@ -1,4 +1,4 @@
-\c wiki
+
 TRUNCATE TABLE authors, articles, categories RESTART IDENTITY;
 
 INSERT INTO authors
