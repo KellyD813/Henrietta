@@ -1,7 +1,4 @@
 
-CREATE DATABASE wiki;
-
-
 CREATE TABLE authors (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR,
