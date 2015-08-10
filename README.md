@@ -1,11 +1,11 @@
 
 # “Air-venturous” Wiki
 
-This project is a simple Wiki created for ”Air-venturous”, a fictional, hot air balloon company.
+This project is a simple Wiki created for “Air-venturous”, a fictional, hot air balloon company.
 
 ## Features
 
-An ”Air-venturous” employee can search the Wiki for articles by browsing through article, category, or author pages. A user can also create, edit, or delete articles. Additionally, articles can be written in markdown.
+An “Air-venturous” employee can search the Wiki for articles by browsing through article, category, or author pages. A user can also create, edit, or delete articles. Additionally, articles can be written in markdown.
 
 ## Technology
 
