@@ -19,12 +19,12 @@
     </form>
     <p class="login-msg">You are Logged In</p>
   <% else %>
-  <p class="login-msg">You are Not Logged In</p>
+    <p class="login-msg">You are Not Logged In</p>
   <% end %>
-</div>
+  </div>
   <div class="wrapper">
     <% if current_user %>
-       <div class="sidebar">
+      <div class="sidebar">
         <ul>
           <li><a href="/users/<%= current_user %>">Home</a></li>
           <li><a href="/articles">Articles</a></li>
